@@ -1,3 +1,4 @@
+import colors from 'tailwindcss/colors'
 import type { Config } from 'tailwindcss'
 
 export default {
@@ -5,6 +6,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: '#4242DB',
+        secondary: '#A57C00',
+        neutral: colors.slate[700],
+        warn: colors.amber[500],
         osa: {
           50: '#F7F7FD',
           100: '#D5D5F4',
