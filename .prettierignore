@@ -1,0 +1,6 @@
+dist/
+node_modules/
+.astro/
+preview/.astro/
+preview/dist/
+preview/node_modules/

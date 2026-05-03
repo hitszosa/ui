@@ -1,0 +1,32 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title?: string
+}
+
+const { title = '@hitszosa/ui Preview' } = Astro.props
+---
+
+<!doctype html>
+<html
+  lang="en"
+  data-default-theme-mode="system"
+  data-theme-storage-key="ui-preview-theme"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <script>
+      import '@hitszosa/ui/client/theme-init'
+    </script>
+  </head>
+  <body
+    class="bg-page-bg text-page-fg min-h-screen transition-colors duration-300 ease-in-out"
+  >
+    <main class="mx-auto max-w-7xl px-6 py-10 lg:px-10">
+      <slot />
+    </main>
+  </body>
+</html>

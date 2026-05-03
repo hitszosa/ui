@@ -1,0 +1,312 @@
+---
+import {
+  osaLogo01,
+  osaLogoAlt,
+  osaLogoDefault,
+  osaLogoMono,
+  osaLogoOld,
+  osaLogoPub,
+  osaLogoVtuber,
+  ThemeToggle,
+} from '@hitszosa/ui'
+import Layout from '../layouts/Layout.astro'
+
+const semanticTokens = [
+  { name: 'primary', sampleClass: 'bg-primary' },
+  { name: 'secondary', sampleClass: 'bg-secondary' },
+  { name: 'neutral', sampleClass: 'bg-neutral' },
+  { name: 'warn', sampleClass: 'bg-warn' },
+  { name: 'page-bg', sampleClass: 'bg-page-bg' },
+  { name: 'page-fg', sampleClass: 'bg-page-fg' },
+  { name: 'muted-fg', sampleClass: 'bg-muted-fg' },
+  { name: 'surface', sampleClass: 'bg-surface' },
+  { name: 'surface-fg', sampleClass: 'bg-surface-fg' },
+  { name: 'surface-border', sampleClass: 'bg-surface-border' },
+  { name: 'osa-fg', sampleClass: 'bg-osa-fg' },
+  { name: 'osa-hover', sampleClass: 'bg-osa-hover' },
+] as const
+
+const osaPalette = [
+  { shade: 50, hex: '#F7F7FD' },
+  { shade: 100, hex: '#D5D5F4' },
+  { shade: 200, hex: '#B1B1ED' },
+  { shade: 300, hex: '#8D8DE6' },
+  { shade: 400, hex: '#6868E0' },
+  { shade: 500, hex: '#4242DB' },
+  { shade: 600, hex: '#2323CC' },
+  { shade: 700, hex: '#1919A7' },
+  { shade: 800, hex: '#111180' },
+  { shade: 900, hex: '#191948' },
+  { shade: 950, hex: '#0F0F24' },
+] as const
+
+const accentPalette = [
+  { shade: 50, hex: '#FEFCF5' },
+  { shade: 100, hex: '#FDF3D6' },
+  { shade: 200, hex: '#FCEBB7' },
+  { shade: 300, hex: '#FCE296' },
+  { shade: 400, hex: '#FCDA75' },
+  { shade: 500, hex: '#FDD353' },
+  { shade: 600, hex: '#FFC518' },
+  { shade: 700, hex: '#DEA700' },
+  { shade: 800, hex: '#A57C00' },
+  { shade: 900, hex: '#6C5100' },
+  { shade: 950, hex: '#2C2307' },
+] as const
+
+const logos = [
+  { name: 'osaLogoDefault', ...osaLogoDefault },
+  { name: 'osaLogoMono', ...osaLogoMono },
+  { name: 'osaLogoPub', ...osaLogoPub },
+  { name: 'osaLogoAlt', ...osaLogoAlt },
+  { name: 'osaLogoVtuber', ...osaLogoVtuber },
+  { name: 'osaLogoOld', ...osaLogoOld },
+  { name: 'osaLogo01', ...osaLogo01 },
+] as const
+---
+
+<Layout>
+  <div
+    class="mb-10 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between"
+  >
+    <div class="max-w-3xl">
+      <p class="mb-3 text-sm uppercase tracking-[0.28em] text-muted-fg">
+        @hitszosa/ui
+      </p>
+      <h1 class="mb-4 text-5xl font-black tracking-tight text-osa-fg">
+        Preview
+      </h1>
+      <p class="max-w-2xl text-base leading-7 text-muted-fg">
+        Live surface for shared theme tokens, logo assets, and reusable
+        components. Use this page to tune light / dark / system behavior before
+        publishing the package.
+      </p>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <ThemeToggle
+        size="lg"
+        defaultMode="system"
+        storageKey="ui-preview-theme"
+      />
+    </div>
+  </div>
+
+  <section
+    class="mb-10 rounded-[28px] border border-surface-border bg-surface p-6 shadow-[rgba(0,0,0,0.08)_0px_16px_40px_-16px] transition-colors duration-300 ease-in-out"
+  >
+    <div class="mb-6 flex items-center justify-between gap-4">
+      <div>
+        <h2 class="text-2xl font-bold text-osa-fg">Theme</h2>
+        <p class="mt-1 text-sm text-muted-fg">
+          Shared semantic tokens rendered against real surfaces.
+        </p>
+      </div>
+      <ThemeToggle
+        size="sm"
+        defaultMode="system"
+        storageKey="ui-preview-theme"
+      />
+    </div>
+
+    <div class="grid gap-4 md:grid-cols-3">
+      <div
+        class="rounded-2xl border border-surface-border bg-page-bg p-5 transition-colors duration-300 ease-in-out"
+      >
+        <p class="mb-2 text-xs uppercase tracking-[0.22em] text-muted-fg">
+          Page
+        </p>
+        <h3 class="mb-2 text-xl font-bold text-page-fg">Page foreground</h3>
+        <p class="text-sm leading-6 text-muted-fg">
+          Text on the page background should remain readable in all three theme
+          modes.
+        </p>
+      </div>
+      <div
+        class="rounded-2xl border border-surface-border bg-surface p-5 transition-colors duration-300 ease-in-out"
+      >
+        <p class="mb-2 text-xs uppercase tracking-[0.22em] text-muted-fg">
+          Surface
+        </p>
+        <h3 class="mb-2 text-xl font-bold text-surface-fg">
+          Surface foreground
+        </h3>
+        <p class="text-sm leading-6 text-muted-fg">
+          Cards, toggles, and buttons use the shared surface variables from the
+          package.
+        </p>
+      </div>
+      <div
+        class="rounded-2xl border border-surface-border bg-surface p-5 transition-colors duration-300 ease-in-out"
+      >
+        <p class="mb-2 text-xs uppercase tracking-[0.22em] text-muted-fg">
+          Brand
+        </p>
+        <h3 class="mb-2 text-xl font-bold text-osa-fg">OSA foreground</h3>
+        <p class="text-sm leading-6 text-muted-fg">
+          Brand-facing text and hover accents come from the OSA semantic tokens.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="mb-10 rounded-[28px] border border-surface-border bg-surface p-6 shadow-[rgba(0,0,0,0.08)_0px_16px_40px_-16px] transition-colors duration-300 ease-in-out"
+  >
+    <h2 class="mb-2 text-2xl font-bold text-osa-fg">Semantic Colors</h2>
+    <p class="mb-6 text-sm text-muted-fg">
+      Single-value tokens for app UI and brand emphasis.
+    </p>
+    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      {
+        semanticTokens.map((token) => (
+          <div class="rounded-2xl border border-surface-border bg-page-bg p-4 transition-colors duration-300 ease-in-out">
+            <div
+              class:list={[
+                'mb-3 h-16 rounded-xl border border-surface-border',
+                token.sampleClass,
+              ]}
+            />
+            <p class="font-mono text-sm text-page-fg">{token.name}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="mb-10 grid gap-8 xl:grid-cols-2">
+    <div
+      class="rounded-[28px] border border-surface-border bg-surface p-6 shadow-[rgba(0,0,0,0.08)_0px_16px_40px_-16px] transition-colors duration-300 ease-in-out"
+    >
+      <h2 class="mb-2 text-2xl font-bold text-osa-fg">OSA Palette</h2>
+      <p class="mb-6 text-sm text-muted-fg">
+        Physical scale for deep brand tuning.
+      </p>
+      <div class="grid gap-3">
+        {
+          osaPalette.map((shade) => (
+            <div class="flex items-center gap-4 rounded-xl border border-surface-border bg-page-bg p-3 transition-colors duration-300 ease-in-out">
+              <div
+                class="h-10 w-14 rounded-lg"
+                style={`background-color: ${shade.hex}`}
+              />
+              <span class="font-mono text-sm text-page-fg">
+                osa-{shade.shade}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <div
+      class="rounded-[28px] border border-surface-border bg-surface p-6 shadow-[rgba(0,0,0,0.08)_0px_16px_40px_-16px] transition-colors duration-300 ease-in-out"
+    >
+      <h2 class="mb-2 text-2xl font-bold text-osa-fg">Accent Palette</h2>
+      <p class="mb-6 text-sm text-muted-fg">
+        Support scale for hover and highlight work.
+      </p>
+      <div class="grid gap-3">
+        {
+          accentPalette.map((shade) => (
+            <div class="flex items-center gap-4 rounded-xl border border-surface-border bg-page-bg p-3 transition-colors duration-300 ease-in-out">
+              <div
+                class="h-10 w-14 rounded-lg"
+                style={`background-color: ${shade.hex}`}
+              />
+              <span class="font-mono text-sm text-page-fg">
+                accent-{shade.shade}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="mb-10 rounded-[28px] border border-surface-border bg-surface p-6 shadow-[rgba(0,0,0,0.08)_0px_16px_40px_-16px] transition-colors duration-300 ease-in-out"
+  >
+    <h2 class="mb-2 text-2xl font-bold text-osa-fg">Assets</h2>
+    <p class="mb-6 text-sm text-muted-fg">
+      Shared logo variants and their exported alt text.
+    </p>
+    <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      {
+        logos.map((logo) => (
+          <div class="rounded-2xl border border-surface-border bg-page-bg p-5 transition-colors duration-300 ease-in-out">
+            <div class="mb-4 flex h-48 items-center justify-center rounded-2xl border border-surface-border bg-surface p-4">
+              <img
+                class="max-h-full max-w-full object-contain"
+                src={logo.src}
+                alt={logo.alt}
+              />
+            </div>
+            <p class="font-mono text-sm text-page-fg">{logo.name}</p>
+            <p class="mt-2 text-sm leading-6 text-muted-fg">{logo.alt}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section
+    class="rounded-[28px] border border-surface-border bg-surface p-6 shadow-[rgba(0,0,0,0.08)_0px_16px_40px_-16px] transition-colors duration-300 ease-in-out"
+  >
+    <h2 class="mb-2 text-2xl font-bold text-osa-fg">Components</h2>
+    <p class="mb-6 text-sm text-muted-fg">
+      Reusable UI pieces rendered in realistic contexts.
+    </p>
+    <div class="grid gap-6 lg:grid-cols-2">
+      <div
+        class="rounded-2xl border border-surface-border bg-page-bg p-5 transition-colors duration-300 ease-in-out"
+      >
+        <p class="mb-4 text-xs uppercase tracking-[0.22em] text-muted-fg">
+          ThemeToggle / size
+        </p>
+        <div class="flex items-center gap-4">
+          <ThemeToggle
+            size="sm"
+            defaultMode="system"
+            storageKey="ui-preview-theme"
+          />
+          <ThemeToggle
+            size="md"
+            defaultMode="system"
+            storageKey="ui-preview-theme"
+          />
+          <ThemeToggle
+            size="lg"
+            defaultMode="system"
+            storageKey="ui-preview-theme"
+          />
+        </div>
+      </div>
+
+      <div
+        class="rounded-2xl border border-surface-border bg-page-bg p-5 transition-colors duration-300 ease-in-out"
+      >
+        <p class="mb-4 text-xs uppercase tracking-[0.22em] text-muted-fg">
+          ThemeToggle / defaults
+        </p>
+        <div class="flex items-center gap-4">
+          <ThemeToggle
+            size="md"
+            defaultMode="light"
+            storageKey="ui-preview-theme-light"
+          />
+          <ThemeToggle
+            size="md"
+            defaultMode="dark"
+            storageKey="ui-preview-theme-dark"
+          />
+          <ThemeToggle
+            size="md"
+            defaultMode="system"
+            storageKey="ui-preview-theme-system"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

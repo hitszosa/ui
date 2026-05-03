@@ -1,0 +1,21 @@
+:root {
+  --ui-page-bg: #ffffff;
+  --ui-page-fg: #1e293b;
+  --ui-muted-fg: #94a3b8;
+  --ui-osa-fg: #4242db;
+  --ui-osa-hover: #a57c00;
+  --ui-surface: #ffffff;
+  --ui-surface-fg: #191948;
+  --ui-surface-border: #e2e8f0;
+}
+
+.dark {
+  --ui-page-bg: #0f172a;
+  --ui-page-fg: #f8fafc;
+  --ui-muted-fg: #94a3b8;
+  --ui-osa-fg: #8d8de6;
+  --ui-osa-hover: #fcda75;
+  --ui-surface: #111827;
+  --ui-surface-fg: #f7f7fd;
+  --ui-surface-border: #334155;
+}

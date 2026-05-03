@@ -6,7 +6,9 @@ import osaLogoVtuberAsset from './assets/logos/osa-logo-vtuber.svg'
 import osaLogoOldAsset from './assets/logos/osa-logo-old.svg'
 import osaLogo01Asset from './assets/logos/osa-logo-01.svg'
 
-export { default as tailwindPreset } from './tailwind/preset'
+export { default as tailwindPreset } from './tailwind/preset.js'
+export { default as ThemeToggle } from './components/ThemeToggle.astro'
+export * from './client/theme.js'
 
 export const osaLogoDefault = {
   src: osaLogo.src,
